@@ -1,0 +1,9 @@
+package com.example.agenda.models;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name="tb_users")
+public class User implements Serializable{
+
+}

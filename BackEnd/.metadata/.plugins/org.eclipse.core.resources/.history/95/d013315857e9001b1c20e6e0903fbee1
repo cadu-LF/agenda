@@ -1,0 +1,19 @@
+package com.example.agenda.models;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name="tb_users")
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -873494616698140938L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	private String email, password;
+	
+}

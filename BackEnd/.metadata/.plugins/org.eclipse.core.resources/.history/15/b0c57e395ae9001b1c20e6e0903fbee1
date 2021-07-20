@@ -1,0 +1,50 @@
+package com.example.agenda.models;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name="tb_contacts")
+public class Contact implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1203286572253189459L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	private String fulName, phone, email, note;
+	public String getFulName() {
+		return fulName;
+	}
+	public void setFulName(String fulName) {
+		this.fulName = fulName;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public Long getId() {
+		return id;
+	}
+	
+	
+}

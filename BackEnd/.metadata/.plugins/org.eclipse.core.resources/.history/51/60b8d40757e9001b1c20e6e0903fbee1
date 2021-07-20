@@ -1,0 +1,17 @@
+package com.example.agenda.models;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name="tb_categories")
+public class Category implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2860597640787672524L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.INDENTITY)
+	private Long id;
+
+}

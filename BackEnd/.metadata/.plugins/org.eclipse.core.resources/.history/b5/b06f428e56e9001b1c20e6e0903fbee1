@@ -1,0 +1,68 @@
+package com.example.agenda.models;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name="tb_addreses")
+public class Addres implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4018180864500377506L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	private String CEP, street, neighborhood, city, state, country;
+	public String getCEP() {
+		return CEP;
+	}
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
+	public String getStreet() {
+		return street;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	public String getNeighborhood() {
+		return neighborhood;
+	}
+	public void setNeighborhood(String neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public Long getId() {
+		return this.id;
+	}
+	public Addres(String CEP, String street, String neighborhood, 
+					String city, String state, String country) {
+		this.setCEP(CEP);
+		this.setStreet(street);
+		this.setNeighborhood(neighborhood);
+		this.setCity(city);
+		this.setState(state);
+		this.setCountry(country);
+	}
+	
+	
+}
