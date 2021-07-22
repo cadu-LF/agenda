@@ -1,0 +1,86 @@
+package com.example.agenda.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.agenda.models.Contact;
+import com.example.agenda.models.User;
+import com.example.agenda.repositories.ContactRepository;
+import com.example.agenda.repositories.UserRepository;
+
+@RestController
+public class ContactController {
+
+	@Autowired
+	ContactRepository injection;
+	
+	@Autowired
+	UserRepository userInjection;
+	
+	@PostMapping("agenda/contact")
+	public String postContact(@RequestBody Contact contact) {
+		injection.save(contact);
+		return("Salvo");
+	}
+	
+	@GetMapping("agenda/contact")
+	public List<Contact> getContacts(){
+		return injection.findAll();
+	}
+	
+	@DeleteMapping("agenda/contact/{id}")
+	public String deleteContact(@PathVariable Long id) {
+		injection.deleteById(id);
+		return("Deletado");
+	}
+	
+	@PutMapping("agenda/contact")
+	public String updateContact(@RequestBody Contact contact) {
+		injection.save(contact);
+		return("Atualizado");
+	}
+	
+	@PutMapping("agenda/contact/{contactId}/user/{userId}")
+	public String assignUserToContact(
+			@PathVariable Long contactId,
+			@PathVariable Long userId
+			) {
+		Contact contact = injection.getById(contactId);
+		User user = userInjection.getById(userId);
+		contact.assignUser(user);
+		injection.save(contact);
+		return("User assigned");
+	}
+	
+	@PutMapping("agenda/contact/{contactId}/address/{addressId}")
+	public String assignAddressToContact(
+			@PathVariable Long contactId,
+			@PathVariable Long addressId
+			) {
+		Contact contact = injection.getById(contactId);
+		Address address = addressInjection.getById(addressId);
+		contact.assignAddress(address);
+		injection.save(contact);
+		return("address assigned");
+	}
+	@PutMapping("agenda/contact/{contactId}/category/{categoryId}")
+	public String assignCategoryToContact(
+			@PathVariable Long contactId,
+			@PathVariable Long categoryId
+			) {
+		Contact contact = injection.getById(contactId);
+		Category category = categoryInjection.getById(categoryId);
+		contact.assignCategory(category);
+		injection.save(contact);
+		return("User assigned");
+	}
+	
+}

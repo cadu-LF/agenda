@@ -39,3 +39,18 @@ CONSTRAINT fk_tb_contacts_id_category FOREIGN KEY(id_category)
 CONSTRAINT fk_tb_contacts_id_addres FOREIGN KEY(id_addres)
 	REFERENCES tb_addreses(id_addres)
 );
+
+SELECT * 
+FROM tb_contacts;
+
+
+SELECT * 
+FROM tb_users;
+
+
+SELECT * 
+FROM tb_addreses;
+
+
+SELECT * 
+FROM tb_categories;

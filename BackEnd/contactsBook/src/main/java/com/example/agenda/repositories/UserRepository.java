@@ -6,4 +6,6 @@ import com.example.agenda.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	public User findByEmail(String email);
+	
 }

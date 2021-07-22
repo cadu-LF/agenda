@@ -1,13 +1,19 @@
 package com.example.agenda.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="tb_categories")
@@ -22,6 +28,12 @@ public class Category implements Serializable{
 	@Column(name="id_category")
 	private Long id;
 	private String description;
+	
+	@JsonIgnore
+	@OneToMany
+	@JoinColumn(name="id_category", referencedColumnName="id_category")
+	private List<Contact> contacts = new ArrayList<>();
+	
 	public String getDescription() {
 		return description;
 	}

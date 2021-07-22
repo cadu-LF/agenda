@@ -1,13 +1,19 @@
 package com.example.agenda.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="tb_addreses")
@@ -27,6 +33,12 @@ public class Address implements Serializable{
 	private String street, neighborhood, city, country;
 	@Column(name="uf")
 	private String uf;
+	
+	@JsonIgnore
+	@OneToMany
+	@JoinColumn(name="id_addres", referencedColumnName="id_addres")
+	private List<Contact> contacts = new ArrayList<>();
+	
 	public String getCep() {
 		return cep;
 	}

@@ -25,16 +25,17 @@ public class Contact implements Serializable{
 	@Column(name="id_contact")
 	private Long id;
 	private String fulName, phone, email, note;
+	
 	@ManyToOne
-	@JoinColumn(name="id_user")
+	@JoinColumn(name="id_user", referencedColumnName = "id_user")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="id_category")
+	@JoinColumn(name="id_category", referencedColumnName = "id_category")
 	private Category category;
 	
 	@ManyToOne
-	@JoinColumn(name="id_addres")
+	@JoinColumn(name="id_addres", referencedColumnName = "id_addres")
 	private Address address;
 	
 	public String getFulName() {
@@ -98,6 +99,15 @@ public class Contact implements Serializable{
 	}
 	public Contact() {
 		
+	}
+	public void assignUser(User user) {
+		this.setUser(user);
+	}
+	public void assignAddress(Address address) {
+		this.setAddress(address);
+	}
+	public void assignCategory(Category category) {
+		this.setCategory(category);
 	}
 		
 }
